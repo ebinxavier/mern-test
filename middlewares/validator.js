@@ -3,7 +3,9 @@ const { check, validationResult } = require('express-validator');
 
 exports.signUpValidator = [
     check('username').not().isEmpty().trim().withMessage('Username field is required'),
-    check('username').not().isEmail().normalizeEmail().withMessage('Email must be in correct format'),
+    // check('email').not().isEmail().normalizeEmail().withMessage('Email must be in correct format'),
+    check('email').isEmail().normalizeEmail().withMessage('Email must be in correct format'),
+
     check('password').isLength({ min: 8 }).withMessage("Password must be at least 8 characters"),
 
 ]

@@ -8,6 +8,8 @@ import {
 } from "../../../utils/authValidators";
 import Alerts from "../../../components/Alerts";
 import * as API from "../../../utils/api";
+import Swal from "sweetalert2";
+
 export default function SignUp() {
   const [authData, setAuthData] = useState({
     username: "",
@@ -38,6 +40,10 @@ export default function SignUp() {
   };
   const onSubmit = (e) => {
     e.preventDefault();
+    setAuthData({
+      ...authData,
+      loading: true,
+    });
     if (!checkIsEmpty(authData.username)) {
       return setAuthErrors({
         ...authErrors,
@@ -62,28 +68,40 @@ export default function SignUp() {
         confirmPassword: "Passwords are not the same!",
       });
     }
-    setAuthData({
-      ...authData,
-      loading: true,
-    });
+
     const data = {
       username: authData.username,
       email: authData.email,
       password: authData.password,
     };
-    API.signUpUser(data).then((res) => {
-      console.log(res);
-      setAuthData({
-        ...authData,
-        username: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
+    API.signUpUser(data)
+      .then((res) => {
+        console.log(res);
+        setAuthData({
+          ...authData,
+          username: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
 
-        loading: false,
+          loading: false,
+        });
+        Swal.fire(
+          "Success!!",
+          "User has been succesfully registered!.",
+          "success"
+        );
+      })
+      .catch((err) => {
+        const message = err.response && err.response.data.errorrMessage;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: message,
+        });
       });
-    });
   };
+
   return (
     <div className="container auth-wrapper">
       <div className="col-md-8 mt-5 px-4 py-4">
