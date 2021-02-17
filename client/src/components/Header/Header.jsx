@@ -20,7 +20,7 @@ export default function Header() {
 
       <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li className="nav-item active">
+          <li className="nav-item active-link">
             <Link to="/login" className="nav-link" href="#">
               Login <span className="sr-only">(current)</span>
             </Link>
