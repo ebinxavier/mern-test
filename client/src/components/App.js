@@ -11,7 +11,7 @@ export default function App() {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route path="/login" component={Login} />
+          <Route path="/login" exact component={Login} />
           <Route path="/signup" component={SignUp} />
 
         </Switch>

@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "./Header.css";
 export default function Header() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-white">
       <button
         className="navbar-toggler"
         type="button"
@@ -14,21 +15,30 @@ export default function Header() {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <Link className="navbar-brand" href="#">
+      <NavLink className="navbar-brand" to="/login">
         Navbar
-      </Link>
+      </NavLink>
 
       <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li className="nav-item active-link">
-            <Link to="/login" className="nav-link" href="#">
+          <li className="nav-item ">
+            <NavLink
+              to="/login"
+              activeClassName="active-link"
+              className="nav-link"
+              href="#"
+            >
               Login <span className="sr-only">(current)</span>
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link to="/signup" className="nav-link" href="#">
+            <NavLink
+              to="/signup"
+              activeClassName="active-link"
+              className="nav-link"
+            >
               Sign up
-            </Link>
+            </NavLink>
           </li>
         </ul>
         <form className="form-inline my-2 my-lg-0">
