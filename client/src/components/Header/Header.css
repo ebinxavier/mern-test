@@ -1,3 +1,27 @@
 .active-link {
   border-bottom: 2px solid #845ec2;
 }
+
+.avatar-circle {
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  background: #b39cd0;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+}
+
+.initials {
+  position: relative;
+  top: 6px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.dropdown-wrapper {
+  display: flex;
+  /* justify-content: end; */
+  flex-direction: row-reverse;
+  margin-right: 1%;
+}

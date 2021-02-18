@@ -1,9 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
 import { checkIsEmpty } from "../../../utils/authValidators";
 import Alerts from "../../../components/Alerts";
 import * as API from "../../../utils/api";
+import { setAuthentication, isAuthenticated } from "../../../utils/auth";
 export default function Login(props) {
+  useEffect(() => {
+    if (isAuthenticated() && isAuthenticated().role === 1) {
+      props.history.push("/admin/dashboard");
+    } else if (isAuthenticated() && isAuthenticated().role === 0) {
+      console.log("user");
+      props.history.push("/dashboard");
+    }
+  }, [props.history]);
   const [authData, setAuthData] = useState({
     email: "",
     password: "",
@@ -51,7 +60,13 @@ export default function Login(props) {
     };
     API.loginUser(data)
       .then((res) => {
-        console.log(res);
+        setAuthentication(res.data.token, res.data.user);
+        if (isAuthenticated() && isAuthenticated().role === 1) {
+          props.history.push("/admin/dashboard");
+        } else {
+          console.log("user");
+          props.history.push("/dashboard");
+        }
       })
       .catch((err) => {
         console.log(err);

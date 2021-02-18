@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SignUp.css";
 import {
   checkIsEmpty,
@@ -9,8 +9,17 @@ import {
 import Alerts from "../../../components/Alerts";
 import * as API from "../../../utils/api";
 import Swal from "sweetalert2";
+import { isAuthenticated } from "../../../utils/auth";
 
-export default function SignUp() {
+export default function SignUp(props) {
+  useEffect(() => {
+    if (isAuthenticated() && isAuthenticated().role === 1) {
+      props.history.push("/admin/dashboard");
+    } else if (isAuthenticated() && isAuthenticated().role === 0) {
+      console.log("user");
+      props.history.push("/dashboard");
+    }
+  }, [props.history]);
   const [authData, setAuthData] = useState({
     username: "",
     email: "",
