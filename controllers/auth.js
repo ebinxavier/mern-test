@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const bcrypt = require('bcryptjs')
-
+const jwt = require('jsonwebtoken')
+const { jwtSecret, jwtExpire } = require('../config/keys')
 exports.signUpController = async (req, res) => {
     const { username, email, password } = req.body
     console.log(req.body)
@@ -25,6 +26,47 @@ exports.signUpController = async (req, res) => {
     }
 
     catch (error) {
+        console.log(error)
+        res.status(500).json({
+            errorrMessage: 'Server errorr!'
+        })
+    }
+}
+
+
+
+exports.signInController = async (req, res) => {
+    const { email, password } = req.body
+    try {
+        //if provided email matches the database
+        const user = await User.findOne({ email })
+        if (!user) {
+            return res.status(400).json({
+                errorrMessage: 'Invalid Credentials'
+            })
+        }
+        const isMatch = await bcrypt.compare(password, user.password)
+        if (!isMatch) {
+            return res.status(400).json({
+                errorrMessage: 'Invalid Credentials'
+            })
+        }
+        const payload = {
+            user: {
+                _id: user._id
+            }
+        }
+        jwt.sign(payload, jwtSecret, { expiresIn: jwtExpire }, (err, token) => {
+            if (err) {
+                console.log('jwt errorr', err)
+            }
+            const { _id, username, email, role } = user
+            res.json({
+                token,
+                user: { _id, username, email, role }
+            })
+        })
+    } catch (error) {
         console.log(error)
         res.status(500).json({
             errorrMessage: 'Server errorr!'

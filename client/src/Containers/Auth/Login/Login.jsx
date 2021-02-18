@@ -1,67 +1,110 @@
 import React, { useState } from "react";
 import "./Login.css";
+import { checkIsEmpty } from "../../../utils/authValidators";
+import Alerts from "../../../components/Alerts";
+import * as API from "../../../utils/api";
 export default function Login(props) {
   const [authData, setAuthData] = useState({
     email: "",
     password: "",
     loading: false,
   });
+  const [authErrors, setAuthErrors] = useState({
+    email: "",
+    password: "",
+  });
+
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     setAuthData({
       ...authData,
       [name]: value,
     });
+    setAuthErrors({
+      ...authErrors,
+      email: "",
+      password: "",
+    });
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setAuthData({
+      ...authData,
+      loading: true,
+    });
+    if (!checkIsEmpty(authData.email)) {
+      setAuthErrors({
+        ...authErrors,
+        email: "Email cannot be empty!",
+      });
+    }
+    if (!checkIsEmpty(authData.password)) {
+      setAuthErrors({
+        ...authErrors,
+        password: "Password cannot be empty!",
+      });
+    }
+    const data = {
+      email: authData.email,
+      password: authData.password,
+    };
+    API.loginUser(data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="container auth-wrapper">
       <div className="col-md-8 mt-5 px-4 py-4">
         <form>
-          <div class="mb-3">
-            <label htmlFor="exampleInputEmail1" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="exampleInputEmail1" className="form-label">
               Email address
             </label>
             <input
               type="email"
-              class="form-control auth-inputs"
+              className="form-control auth-inputs"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               name="email"
               value={authData.email}
               onChange={handleFormChange}
             />
-            {/* {authErrors.email && <Alerts errorrMessage={authErrors.email} />} */}
+            {authErrors.email && <Alerts errorrMessage={authErrors.email} />}
           </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Password
             </label>
             <input
               type="password"
-              class="form-control auth-inputs"
+              className="form-control auth-inputs"
               id="exampleInputPassword1"
               name="password"
               value={authData.password}
               onChange={handleFormChange}
             />
-            {/* {authErrors.password && (
+            {authErrors.password && (
               <Alerts errorrMessage={authErrors.password} />
-            )} */}
+            )}
           </div>
 
-          <button type="submit" class="btn purple-btn">
+          <button type="submit" className="btn purple-btn" onClick={onSubmit}>
             {authData.loading ? (
               <>
                 <span className="mr-2">Loading...</span>
                 <div
-                  class="spinner-border text-white"
+                  className="spinner-border text-white"
                   style={{ width: 20, height: 20 }}
                   role="status"
                 />
               </>
             ) : (
-              "Submit"
+              "Login"
             )}
           </button>
         </form>

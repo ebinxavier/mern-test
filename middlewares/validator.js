@@ -9,8 +9,6 @@ exports.signUpValidator = [
     check('password').isLength({ min: 8 }).withMessage("Password must be at least 8 characters"),
 
 ]
-
-
 exports.validatorResult = (req, res, next) => {
     const result = validationResult(req);
     const hasErrors = !result.isEmpty()
@@ -22,3 +20,10 @@ exports.validatorResult = (req, res, next) => {
     }
     next();
 }
+
+exports.signInValidator = [
+    check('email').isEmail().normalizeEmail().withMessage('Email must be in correct format'),
+
+    check('password').isLength({ min: 8 }).withMessage("Password must be at least 8 characters"),
+
+]

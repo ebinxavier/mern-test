@@ -93,6 +93,10 @@ export default function SignUp() {
         );
       })
       .catch((err) => {
+        setAuthData({
+          ...authData,
+          loading: false,
+        });
         const message = err.response && err.response.data.errorrMessage;
         Swal.fire({
           icon: "error",
@@ -178,7 +182,7 @@ export default function SignUp() {
                 />
               </>
             ) : (
-              "Submit"
+              "Register"
             )}
           </button>
         </form>
