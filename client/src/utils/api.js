@@ -26,6 +26,6 @@ export const createCategory = async (data) => {
             'Content-Type': 'application/json'
         }
     }
-    const response = await axios.post('api/category', data, config);
+    const response = await axios.post('/api/category', data, config);
     return response
 }
