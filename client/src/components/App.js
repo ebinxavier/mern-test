@@ -8,6 +8,7 @@ import AdminDashboard from '../Containers/AdminDashboard'
 import UserDashboard from '../Containers/UserDashboard'
 import AdminRoutes from '../Routes/AdminRoutes'
 import UserRoutes from '../Routes/UserRoutes'
+import Category from "../Containers/AdminDashboard/Category"
 import './App.css'
 export default function App() {
   return (
@@ -19,6 +20,8 @@ export default function App() {
           <Route path="/login" exact component={Login} />
           <Route path="/signup" component={SignUp} />
           <AdminRoutes path="/admin/dashboard" component={AdminDashboard} />
+          <AdminRoutes path="/admin/category/create" component={Category} />
+
           <UserRoutes path="/dashboard" component={UserDashboard} />
 
 

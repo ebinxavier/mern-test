@@ -3,12 +3,6 @@ import "./Sidebar.css";
 import { isAuthenticated, logout } from "../../utils/auth";
 import { useHistory } from "react-router-dom";
 export default function Sidebar() {
-  const history = useHistory();
-  const handleLogout = () => {
-    logout(() => {
-      history.push("/login");
-    });
-  };
   return (
     <div className="col-md-3">
       <div className="sidebar">
@@ -34,7 +28,15 @@ export default function Sidebar() {
           {isAuthenticated() && isAuthenticated().role === 1 && (
             <>
               <li>
-                <a>Admin dashb</a>
+                <a>Categories</a>
+              </li>
+              <li>
+                <a>Add Food</a>
+              </li>
+              <li>
+                <a href="/admin/category/create" className="text-white">
+                  Create Category
+                </a>
               </li>
             </>
           )}
