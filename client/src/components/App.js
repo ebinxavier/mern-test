@@ -6,18 +6,20 @@ import Login from "../Containers/Auth/Login"
 import SignUp from "../Containers/Auth/SignUp"
 import AdminDashboard from '../Containers/AdminDashboard'
 import UserDashboard from '../Containers/UserDashboard'
-
+import AdminRoutes from '../Routes/AdminRoutes'
+import UserRoutes from '../Routes/UserRoutes'
 import './App.css'
 export default function App() {
   return (
     <div>
       <BrowserRouter>
-        <Header />
+        {/* <Header /> */}
+        {/* <Sidebar /> */}
         <Switch>
           <Route path="/login" exact component={Login} />
           <Route path="/signup" component={SignUp} />
-          <Route path="/admin/dashboard" component={AdminDashboard} />
-          <Route path="/dashboard" component={UserDashboard} />
+          <AdminRoutes path="/admin/dashboard" component={AdminDashboard} />
+          <UserRoutes path="/dashboard" component={UserDashboard} />
 
 
 

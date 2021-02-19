@@ -6,7 +6,7 @@
   width: 35px;
   height: 35px;
   text-align: center;
-  background: #b39cd0;
+  background: white;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -15,7 +15,7 @@
 .initials {
   position: relative;
   top: 6px;
-  color: #fff;
+  color: #845ec2;
   font-weight: bold;
 }
 

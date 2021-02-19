@@ -10,7 +10,7 @@ import Alerts from "../../../components/Alerts";
 import * as API from "../../../utils/api";
 import Swal from "sweetalert2";
 import { isAuthenticated } from "../../../utils/auth";
-
+import Header from "../../../components/Header";
 export default function SignUp(props) {
   useEffect(() => {
     if (isAuthenticated() && isAuthenticated().role === 1) {
@@ -116,86 +116,89 @@ export default function SignUp(props) {
   };
 
   return (
-    <div className="container auth-wrapper">
-      <div className="col-md-8 mt-5 px-4 py-4">
-        <form>
-          <div class="mb-3">
-            <label htmlFor="exampleInputEmail1" class="form-label">
-              Username
-            </label>
-            <input
-              type="text"
-              class="form-control auth-inputs"
-              name="username"
-              value={authData.username}
-              onChange={handleFormChange}
-            />
-            {authErrors.username && (
-              <Alerts errorrMessage={authErrors.username} />
-            )}
+    <>
+      <Header />
+      <div className="container auth-wrapper">
+        <div className="col-md-8 mt-5 px-4 py-4">
+          <form>
+            <div class="mb-3">
+              <label htmlFor="exampleInputEmail1" class="form-label">
+                Username
+              </label>
+              <input
+                type="text"
+                class="form-control auth-inputs"
+                name="username"
+                value={authData.username}
+                onChange={handleFormChange}
+              />
+              {authErrors.username && (
+                <Alerts errorrMessage={authErrors.username} />
+              )}
 
-            <label htmlFor="exampleInputEmail1" class="form-label">
-              Email address
-            </label>
-            <input
-              type="email"
-              class="form-control auth-inputs"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              name="email"
-              value={authData.email}
-              onChange={handleFormChange}
-            />
-            {authErrors.email && <Alerts errorrMessage={authErrors.email} />}
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              class="form-control auth-inputs"
-              id="exampleInputPassword1"
-              name="password"
-              value={authData.password}
-              onChange={handleFormChange}
-            />
-            {authErrors.password && (
-              <Alerts errorrMessage={authErrors.password} />
-            )}
+              <label htmlFor="exampleInputEmail1" class="form-label">
+                Email address
+              </label>
+              <input
+                type="email"
+                class="form-control auth-inputs"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                name="email"
+                value={authData.email}
+                onChange={handleFormChange}
+              />
+              {authErrors.email && <Alerts errorrMessage={authErrors.email} />}
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                class="form-control auth-inputs"
+                id="exampleInputPassword1"
+                name="password"
+                value={authData.password}
+                onChange={handleFormChange}
+              />
+              {authErrors.password && (
+                <Alerts errorrMessage={authErrors.password} />
+              )}
 
-            <label htmlFor="exampleInputPassword1" class="form-label">
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              class="form-control auth-inputs"
-              id="exampleInputPassword1"
-              name="confirmPassword"
-              value={authData.confirmPassword}
-              onChange={handleFormChange}
-            />
-            {authErrors.confirmPassword && (
-              <Alerts errorrMessage={authErrors.confirmPassword} />
-            )}
-          </div>
+              <label htmlFor="exampleInputPassword1" class="form-label">
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                class="form-control auth-inputs"
+                id="exampleInputPassword1"
+                name="confirmPassword"
+                value={authData.confirmPassword}
+                onChange={handleFormChange}
+              />
+              {authErrors.confirmPassword && (
+                <Alerts errorrMessage={authErrors.confirmPassword} />
+              )}
+            </div>
 
-          <button type="submit" class="btn purple-btn" onClick={onSubmit}>
-            {authData.loading ? (
-              <>
-                <span className="mr-2">Loading...</span>
-                <div
-                  class="spinner-border text-white"
-                  style={{ width: 20, height: 20 }}
-                  role="status"
-                />
-              </>
-            ) : (
-              "Register"
-            )}
-          </button>
-        </form>
+            <button type="submit" class="btn purple-btn" onClick={onSubmit}>
+              {authData.loading ? (
+                <>
+                  <span className="mr-2">Loading...</span>
+                  <div
+                    class="spinner-border text-white"
+                    style={{ width: 20, height: 20 }}
+                    role="status"
+                  />
+                </>
+              ) : (
+                "Register"
+              )}
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

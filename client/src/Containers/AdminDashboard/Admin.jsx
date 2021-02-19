@@ -1,5 +1,10 @@
 import React from "react";
+import Sidebar from "../../components/Sidebar";
 
 export default function Admin() {
-  return <div>admin</div>;
+  return (
+    <Sidebar>
+      <h2>ok</h2>
+    </Sidebar>
+  );
 }

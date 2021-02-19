@@ -22,76 +22,34 @@ function Header() {
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-            {!isAuthenticated() && (
-              <>
-                <li className="nav-item ">
-                  <NavLink
-                    to="/login"
-                    activeClassName="active-link"
-                    className="nav-link"
-                    href="#"
-                  >
-                    Login <span className="sr-only">(current)</span>
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    to="/signup"
-                    activeClassName="active-link"
-                    className="nav-link"
-                  >
-                    Sign up
-                  </NavLink>
-                </li>
-              </>
-            )}
-            {isAuthenticated() && isAuthenticated().role === 0 && (
-              <>
-                <li className="nav-item ">
-                  <a
-                    activeClassName="active-link"
-                    className="nav-link"
-                    href="#"
-                  >
-                    Dashboard
-                  </a>
-                </li>
-              </>
-            )}
-            {isAuthenticated() && isAuthenticated().role === 1 && (
-              <>
-                <li className="nav-item ">
-                  <a
-                    activeClassName="active-link"
-                    className="nav-link"
-                    href="#"
-                  >
-                    Dashboard
-                  </a>
-                </li>
-              </>
-            )}
+            <>
+              <li className="nav-item ">
+                <NavLink
+                  to="/login"
+                  activeClassName="active-link"
+                  className="nav-link"
+                  href="#"
+                >
+                  Login <span className="sr-only">(current)</span>
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  to="/signup"
+                  activeClassName="active-link"
+                  className="nav-link"
+                >
+                  Sign up
+                </NavLink>
+              </li>
+            </>
           </ul>
-          <div className="avatar-circle" onClick={() => setOpenMenu(!openMenu)}>
+          {/* <div className="avatar-circle" onClick={() => setOpenMenu(!openMenu)}>
             <span className="initials">
-              {isAuthenticated().username.charAt(0).toUpperCase()}
+              {isAuthenticated() &&
+                isAuthenticated().username.charAt(0).toUpperCase()}
             </span>
-          </div>
-
-          {/* <form className="form-inline my-2 my-lg-0">
-          <input
-            className="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button
-            className="btn btn-outline-success my-2 my-sm-0"
-            type="submit"
-          >
-            Search
-          </button>
-        </form> */}
+          </div> */}
         </div>
       </nav>
     </>
