@@ -17,7 +17,7 @@ export default function App() {
         {/* <Header /> */}
         {/* <Sidebar /> */}
         <Switch>
-          <Route path="/login" exact component={Login} />
+          <Route path="/" exact component={Login} />
           <Route path="/signup" component={SignUp} />
           <AdminRoutes path="/admin/dashboard" component={AdminDashboard} />
           <AdminRoutes path="/admin/category/create" component={Category} />

@@ -5,6 +5,8 @@ import Alerts from "../../../components/Alerts";
 import * as API from "../../../utils/api";
 import { setAuthentication, isAuthenticated } from "../../../utils/auth";
 import Header from "../../../components/Header";
+import Swal from "sweetalert2";
+
 export default function Login(props) {
   useEffect(() => {
     if (isAuthenticated() && isAuthenticated().role === 1) {
@@ -71,6 +73,16 @@ export default function Login(props) {
       })
       .catch((err) => {
         console.log(err);
+        const message = err.response && err.response.data.errorrMessage;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: message,
+        });
+        setAuthData({
+          ...authData,
+          loading: false,
+        });
       });
   };
   return (

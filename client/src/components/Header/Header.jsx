@@ -25,7 +25,8 @@ function Header() {
             <>
               <li className="nav-item ">
                 <NavLink
-                  to="/login"
+                  exact
+                  to="/"
                   activeClassName="active-link"
                   className="nav-link"
                   href="#"

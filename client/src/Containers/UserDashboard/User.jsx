@@ -7,7 +7,7 @@ export default function User() {
   const history = useHistory();
   const handleLogout = () => {
     logout(() => {
-      history.push("/login");
+      history.push("/");
     });
   };
   return (

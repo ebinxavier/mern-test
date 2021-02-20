@@ -64,7 +64,7 @@ export default function Category() {
                   />
                 </>
               ) : (
-                "Register"
+                "Create"
               )}
             </button>
           </form>

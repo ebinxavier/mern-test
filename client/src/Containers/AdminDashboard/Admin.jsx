@@ -7,7 +7,7 @@ export default function Admin() {
   const history = useHistory();
   const handleLogout = () => {
     logout(() => {
-      history.push("/login");
+      history.push("/");
     });
   };
   return (
