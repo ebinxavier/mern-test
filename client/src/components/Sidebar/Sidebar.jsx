@@ -28,7 +28,10 @@ export default function Sidebar() {
           {isAuthenticated() && isAuthenticated().role === 1 && (
             <>
               <li>
-                <a>Categories</a>
+                <a href="/admin/dashboard">Dashboard</a>
+              </li>
+              <li>
+                <a href="/admin/products/create">Products</a>
               </li>
               <li>
                 <a>Add Food</a>

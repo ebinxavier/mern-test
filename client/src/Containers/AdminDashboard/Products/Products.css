@@ -1,0 +1,23 @@
+.header-bar {
+  width: 100%;
+  background: white;
+  height: 50px;
+  padding-top: 5px;
+}
+.back-btn {
+  font-size: 25px;
+  margin-left: 4%;
+  cursor: pointer;
+}
+.nav-title {
+  text-align: center;
+  margin-top: -24px;
+}
+.content {
+  margin: 50px;
+  background: white;
+  border-radius: 5px;
+}
+.inner-content {
+  padding: 20px;
+}

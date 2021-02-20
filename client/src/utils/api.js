@@ -29,3 +29,23 @@ export const createCategory = async (data) => {
     const response = await axios.post('/api/category', data, config);
     return response
 }
+
+
+export const getCategory = async () => {
+
+    const response = await axios.get('/api/category');
+    return response
+}
+
+
+export const createProduct = async (data) => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    const response = await axios.post('/api/product', data, config);
+    return response
+}
+
+
