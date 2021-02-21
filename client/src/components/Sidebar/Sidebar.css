@@ -1,10 +1,10 @@
 .sidebar {
   background: #b39cd0;
-  color: #fbeaff;
   transition: all 0.3s;
   height: 100vh;
 }
 .sidebar ul li a {
+  color: #fbeaff;
   padding: 10px;
   font-size: 1.1em;
   display: block;
@@ -28,3 +28,11 @@
   list-style: none;
   padding: 13px;
 }
+.sidebar-active {
+  border-radius: 5px;
+
+  color: #ffffff;
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.23);
+}
+/* color: #FFFFFF; opacity: 1; background: rgba(255, 255, 255, 0.23);  */
