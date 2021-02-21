@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./Products.css";
 import { ArrowLeft } from "react-bootstrap-icons";
 import * as API from "../../../utils/api";
+import Swal from "sweetalert2";
+
 export default function Products(props) {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
@@ -43,14 +45,6 @@ export default function Products(props) {
     e.preventDefault();
     let formData = new FormData();
 
-    // const data = {
-    //   name: productData.name,
-    //   price: productData.price,
-    //   file: formData.append("productImage", productData.productImage),
-    //   description: productData.description,
-    //   category: productData.category,
-    //   quantity: productData.quantity,
-    // };
     formData.append("productName", productData.name);
     formData.append("productPrice", productData.price);
     formData.append("productImage", productData.productImage);
@@ -59,6 +53,20 @@ export default function Products(props) {
     formData.append("productQty", productData.quantity);
     API.createProduct(formData).then((res) => {
       console.log("done");
+      Swal.fire(
+        "Success",
+        `${productData.name} has been succesfully created!`,
+        "success"
+      );
+      setProductData({
+        ...productData,
+        name: "",
+        price: "",
+        productImage: "",
+        description: "",
+        category: "",
+        quantity: "",
+      });
     });
   };
   return (
