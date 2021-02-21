@@ -3,18 +3,23 @@ import "./Products.css";
 import { ArrowLeft } from "react-bootstrap-icons";
 import * as API from "../../../utils/api";
 import Swal from "sweetalert2";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getCategories } from "../../../redux/actions/categoryAction";
 export default function Products(props) {
   const [categories, setCategories] = useState([]);
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state);
+  console.log(data, "dd");
   useEffect(() => {
-    getAllCategory();
+    // getAllCategory();
+    dispatch(getCategories());
   }, []);
-  const getAllCategory = async () => {
-    await API.getCategory().then((res) => {
-      console.log("ress", res);
-      setCategories(res.data.categories);
-    });
-  };
+  // const getAllCategory = async () => {
+  //   await API.getCategory().then((res) => {
+  //     console.log("ress", res);
+  //     setCategories(res.data.categories);
+  //   });
+  // };
   const [productData, setProductData] = useState({
     name: "",
     price: "",
