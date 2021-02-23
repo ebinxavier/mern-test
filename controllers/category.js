@@ -6,6 +6,8 @@ exports.create = async (req, res) => {
         newCategory.category = category
         newCategory = await newCategory.save()
         res.status(200).json({
+            category: newCategory,
+
             successMessage: `${newCategory.category} was created!`
         })
 
