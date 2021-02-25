@@ -5,21 +5,19 @@ import * as API from "../../../utils/api";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../../../redux/actions/categoryAction";
+import { createProduct } from "../../../redux/actions/productActions";
+
 export default function Products(props) {
-  const [categories, setCategories] = useState([]);
+  // const [categories, setCategories] = useState([]);
   const dispatch = useDispatch();
-  const data = useSelector((state) => state);
-  console.log(data, "dd");
+  const { categories } = useSelector((state) => state.categories);
+  const { loading } = useSelector((state) => state.loading);
+  const { successMessage } = useSelector((state) => state.messages);
+
   useEffect(() => {
-    // getAllCategory();
     dispatch(getCategories());
   }, []);
-  // const getAllCategory = async () => {
-  //   await API.getCategory().then((res) => {
-  //     console.log("ress", res);
-  //     setCategories(res.data.categories);
-  //   });
-  // };
+
   const [productData, setProductData] = useState({
     name: "",
     price: "",
@@ -56,24 +54,20 @@ export default function Products(props) {
     formData.append("productDescription", productData.description);
     formData.append("productCategory", productData.category);
     formData.append("productQty", productData.quantity);
-    API.createProduct(formData).then((res) => {
-      console.log("done");
-      Swal.fire(
-        "Success",
-        `${productData.name} has been succesfully created!`,
-        "success"
-      );
-      setProductData({
-        ...productData,
-        name: "",
-        price: "",
-        productImage: "",
-        description: "",
-        category: "",
-        quantity: "",
-      });
+
+    dispatch(createProduct(formData));
+    Swal.fire("Success", successMessage, "success");
+    setProductData({
+      ...productData,
+      name: "",
+      price: "",
+      productImage: "",
+      description: "",
+      category: "",
+      quantity: "",
     });
   };
+
   return (
     <>
       <div className="header-bar">
@@ -165,7 +159,18 @@ export default function Products(props) {
               </div>
               <div className="row justify-content-center mt-3">
                 <button className="btn purple-btn" onClick={onSubmit}>
-                  Create
+                  {loading ? (
+                    <>
+                      <span className="mr-2">Loading...</span>
+                      <div
+                        class="spinner-border text-white"
+                        style={{ width: 20, height: 20 }}
+                        role="status"
+                      />
+                    </>
+                  ) : (
+                    "Create"
+                  )}
                 </button>
               </div>
             </div>

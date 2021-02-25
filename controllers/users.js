@@ -12,9 +12,6 @@ exports.getUsers = async (req, res) => {
 }
 
 
-
-
-
 exports.putUsers = (req, res) => {
     User.findById(req.params.id).then(data => {
         data.role = req.body.role;
@@ -27,4 +24,7 @@ exports.putUsers = (req, res) => {
         .then(() => res.json('success'))
         .catch(err => res.status(400).json('Error: ' + err));
 
+}
+exports.deleteUsers = (req, res) => {
+    User.findByIdAndDelete(req.params.id).then(() => res.json("User has been succesfully deleted!"))
 }

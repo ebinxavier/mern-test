@@ -9,16 +9,15 @@ import { createCategory } from "../../../redux/actions/categoryAction";
 import { clearMessage } from "../../../redux/actions/messageActions";
 export default function Category() {
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.loading);
   const { errorrMessage, successMessage } = useSelector(
     (state) => state.messages
   );
 
   const [category, setCategory] = useState("");
   const [categoryErrorr, setCategoryErrorr] = useState("");
-
+  const [loading, setLoading] = useState(false);
   const onSubmit = (e) => {
-    // setLoading(true);
+    setLoading(true);
 
     e.preventDefault();
     const data = {
@@ -29,6 +28,8 @@ export default function Category() {
       return;
     }
     dispatch(createCategory(data));
+    Swal.fire("Success!", successMessage, "success");
+    setCategory("");
   };
   return (
     <div className="row" style={{ width: "100%" }}>
@@ -48,10 +49,12 @@ export default function Category() {
                 onChange={(e) => {
                   setCategory(e.target.value);
                   setCategoryErrorr("");
-                  // setLoading(false);
+                  setLoading(false);
                 }}
               />
-              {categoryErrorr && <Alerts errorrMessage={categoryErrorr} />}
+              {categoryErrorr && (
+                <Alerts errorrMessage={categoryErrorr || errorrMessage} />
+              )}
             </div>
             <button className="btn purple-btn" onClick={onSubmit}>
               {loading ? (
