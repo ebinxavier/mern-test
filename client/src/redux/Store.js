@@ -5,11 +5,13 @@ import loadingReducer from './reducers/loadingReducer'
 import MessageReducer from './reducers/messageReducer'
 import CategoryReducer from './reducers/categoryReducer'
 import ProductReducer from "./reducers/productReducer"
+import userReducer from "./reducers/usersReducer"
 const reducer = combineReducers({
     loading: loadingReducer,
     messages: MessageReducer,
     categories: CategoryReducer,
-    products: ProductReducer
+    products: ProductReducer,
+    users: userReducer
 })
 
 const initialState = {}

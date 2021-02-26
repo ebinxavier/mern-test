@@ -3,17 +3,19 @@ import "./Index.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "redux/actions/productActions";
 import { getCategories } from "redux/actions/categoryAction";
+import { getUsers } from "redux/actions/userActions";
 export default function DashboardCards() {
   const { products } = useSelector((state) => state.products);
   const { categories } = useSelector((state) => state.categories);
+  const { users } = useSelector((state) => state.users);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getCategories());
+    dispatch(getUsers());
   }, []);
 
-  console.log(useSelector((data) => data));
-  console.log(products, "categories");
   return (
     <div className="container-fluid mt-4">
       <div className="row">
@@ -21,7 +23,7 @@ export default function DashboardCards() {
           <div className="card statistics-card shadow-sm">
             <div className="card-body">
               <h5 className="text-muted">Users</h5>
-              <h3 className="card-title"></h3>
+              <h3 className="card-title">{users.length}</h3>
             </div>
           </div>
         </div>
@@ -46,6 +48,8 @@ export default function DashboardCards() {
         <div className="col-md-3 col-lg-3 col-sm-12 col-xs-12">
           <div className="card statistics-card shadow-sm">
             <div className="card-body">
+              <h5 className="text-muted">Orders</h5>
+
               <h3 className="card-title">1</h3>
             </div>
           </div>

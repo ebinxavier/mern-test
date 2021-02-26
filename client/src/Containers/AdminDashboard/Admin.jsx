@@ -3,6 +3,7 @@ import Sidebar from "../../components/Sidebar";
 import { isAuthenticated, logout } from "../../utils/auth";
 import { useHistory } from "react-router-dom";
 import DashboardCards from "./DashboardCards";
+import DashboardCharts from "./DashboardCharts";
 export default function Admin() {
   const history = useHistory();
   const handleLogout = () => {
@@ -20,6 +21,7 @@ export default function Admin() {
           </button>
         </div>
         <DashboardCards />
+        <DashboardCharts />
       </div>
     </div>
   );
