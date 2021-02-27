@@ -6,7 +6,7 @@ export default function Sidebar() {
   return (
     <div className="col-md-3">
       <div className="sidebar">
-        <div style={{ padding: 20 }}>
+        <div style={{ padding: 20 }} className="d-flex text-white">
           <div className="avatar-circle">
             <span className="initials">
               {isAuthenticated() &&

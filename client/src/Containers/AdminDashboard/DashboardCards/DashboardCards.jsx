@@ -14,7 +14,7 @@ export default function DashboardCards() {
     dispatch(getProducts());
     dispatch(getCategories());
     dispatch(getUsers());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="container-fluid mt-4">
