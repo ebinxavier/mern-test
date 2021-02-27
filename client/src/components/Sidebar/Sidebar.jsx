@@ -2,6 +2,7 @@ import React from "react";
 import "./Sidebar.css";
 import { isAuthenticated, logout } from "../../utils/auth";
 import { useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 export default function Sidebar() {
   return (
     <div className="col-md-3">
@@ -21,27 +22,36 @@ export default function Sidebar() {
           {isAuthenticated() && isAuthenticated().role === 0 && (
             <>
               <li>
-                <a>Dashboard</a>
+                <NavLink to="#">Dashboard</NavLink>
               </li>
             </>
           )}
           {isAuthenticated() && isAuthenticated().role === 1 && (
             <>
               <li>
-                <a href="/admin/dashboard" className="sidebar-active">
+                <NavLink to="/admin/dashboard" activeClassName="sidebar-active">
                   Dashboard
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="/admin/products/create">Products</a>
+                <NavLink
+                  activeClassName="sidebar-active"
+                  to="/admin/products/create"
+                >
+                  Products
+                </NavLink>
               </li>
               <li>
-                <a href="#">Add Food</a>
+                <NavLink to="#">Add Food</NavLink>
               </li>
               <li>
-                <a href="/admin/category/create" className="text-white">
+                <NavLink
+                  activeClassName="sidebar-active"
+                  to="/admin/category/create"
+                  className="text-white"
+                >
                   Create Category
-                </a>
+                </NavLink>
               </li>
             </>
           )}

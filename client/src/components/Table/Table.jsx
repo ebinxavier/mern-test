@@ -1,12 +1,8 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "redux/actions/productActions";
-import { getCategories } from "redux/actions/categoryAction";
-import { getUsers } from "redux/actions/userActions";
+import React from "react";
+import { useSelector } from "react-redux";
 import "./Table.css";
 export default function Table() {
   const { users } = useSelector((state) => state.users);
-
   return (
     <div className="container mt-4">
       <div className="row table-header">
@@ -30,7 +26,7 @@ export default function Table() {
               </div>
             </div>
           ))
-        : ""}
+        : "No Users..!"}
     </div>
   );
 }
