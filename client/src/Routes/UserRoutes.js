@@ -5,7 +5,7 @@ export default function UserRoutes({ component: Component, ...rest }) {
     return (
         <Route
             {...rest}
-            render={(props) => isAuthenticated() && isAuthenticated().role === 0 ? <Component {...props} /> : <Redirect to="/login" />
+            render={(props) => isAuthenticated() && isAuthenticated().role === 0 ? <Component {...props} /> : <Redirect to="/" />
             }
         />
     )

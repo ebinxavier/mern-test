@@ -5,7 +5,7 @@ export default function AdminRoutes({ component: Component, ...rest }) {
     return (
         <Route
             {...rest}
-            render={(props) => isAuthenticated() && isAuthenticated().role === 1 ? <Component {...props} /> : <Redirect to="/login" />
+            render={(props) => isAuthenticated() && isAuthenticated().role === 1 ? <Component {...props} /> : <Redirect to="/" />
             }
         />
     )
