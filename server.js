@@ -18,6 +18,7 @@ app.use('/api/auth/', authRoutes)
 app.use('/api/category', categoryRoutes)
 app.use('/api/product', product)
 app.use('/api/users', users)
+app.use('/uploads', express.static('uploads'))
 connectDb();
 const port = process.env.PORT || 5000
 app.listen(port, () => console.log(`listen port ${port}`))

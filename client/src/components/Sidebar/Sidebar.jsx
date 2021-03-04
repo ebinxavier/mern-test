@@ -34,10 +34,7 @@ export default function Sidebar() {
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  activeClassName="sidebar-active"
-                  to="/admin/products/create"
-                >
+                <NavLink activeClassName="sidebar-active" to="/admin/products">
                   Products
                 </NavLink>
               </li>
