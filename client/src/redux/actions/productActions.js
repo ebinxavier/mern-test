@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { START_LOADING, STOP_LOADING, SHOW_SUCCESS_MESSAGE, SHOW_ERRORR_MESSAGE } from '../types/loadingTypes'
-import { GET_PRODUCTS, DELETE_PRODUCT } from "../types/productTypes"
+import { GET_PRODUCTS, DELETE_PRODUCT, UPDATE_PRODUCT } from "../types/productTypes"
 export const createProduct = data => async dispatch => {
     try {
         await dispatch({ type: START_LOADING })
@@ -34,6 +34,22 @@ export const deleteProduct = (id) => async dispatch => {
         dispatch({ type: DELETE_PRODUCT, payload: response.data })
 
 
+
+    } catch (error) {
+
+    }
+}
+
+
+export const handleUpdateProduct = (id, params) => async dispatch => {
+    try {
+        dispatch({ type: START_LOADING })
+        const response = await axios.put('/api/product/update/product/' + id, params)
+        dispatch({
+            type: UPDATE_PRODUCT,
+            payload: response.data.updatedProduct
+        })
+        dispatch({ type: STOP_LOADING })
 
     } catch (error) {
 

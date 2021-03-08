@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ArrowLeft } from "react-bootstrap-icons";
-
+import { handleUpdateProduct } from "redux/actions/productActions";
+import { useDispatch } from "react-redux";
 export default function Updateproduct(props) {
   const {
     history: {
@@ -9,9 +10,9 @@ export default function Updateproduct(props) {
       },
     },
   } = props;
-
-  console.log(data);
+  const dispatch = useDispatch();
   const [updateProduct, setUpdateProduct] = useState(data);
+  console.log(data);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUpdateProduct({
@@ -19,6 +20,18 @@ export default function Updateproduct(props) {
       [name]: value,
     });
   };
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const id = data._id;
+    const params = {
+      productName: updateProduct.productName,
+      productPrice: updateProduct.productPrice,
+      productDescription: updateProduct.productDescription,
+      productQty: updateProduct.productQty,
+    };
+    dispatch(handleUpdateProduct(id, params));
+  };
+
   return (
     <>
       <div className="header-bar">
@@ -108,6 +121,7 @@ export default function Updateproduct(props) {
                 </div>
               </div>
               <div className="row justify-content-center mt-3">
+                <button onClick={handleUpdate}>update</button>
                 {/* <button className="btn purple-btn" onClick={onSubmit}>
                 {loading ? (
                   <>
