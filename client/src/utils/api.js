@@ -48,4 +48,6 @@ export const createProduct = async (data) => {
     return response
 }
 
-
+export const getProductById = async (id) => {
+    const responese = await axios.get('/api/product/' + id)
+}

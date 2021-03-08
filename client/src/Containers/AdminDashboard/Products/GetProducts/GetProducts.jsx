@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "components/Sidebar";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts, deleteProduct } from "redux/actions/productActions";
+import { useHistory } from "react-router-dom";
 export default function GetProducts(props) {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -13,6 +14,8 @@ export default function GetProducts(props) {
   const handleProductDelete = (id) => {
     dispatch(deleteProduct(id));
   };
+  const history = useHistory();
+
   return (
     <div className="row" style={{ width: "100%" }}>
       <Sidebar />
@@ -54,7 +57,18 @@ export default function GetProducts(props) {
                           ? product.productDescription.substring(0, 60) + "..."
                           : product.productDescription.substring(0, 60)}
                       </p>
-                      <a href={`#${product._id}`} className="btn btn-primary">
+                      <a
+                        // onClick={() => handleEdit(product._id)}
+                        onClick={() =>
+                          props.history.push({
+                            pathname: "/admin/products/update/" + product._id,
+                            state: {
+                              data: product,
+                            },
+                          })
+                        }
+                        className="btn btn-primary"
+                      >
                         Edit
                       </a>
                       <a onClick={() => handleProductDelete(product._id)}>

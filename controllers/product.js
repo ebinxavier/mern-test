@@ -37,7 +37,29 @@ exports.getAll = async (req, res) => {
         console.log(error)
     }
 }
+exports.getProductById = async (req, res) => {
+    const id = req.params.id
 
+    try {
+        const product = await Product.findById(id)
+        res.status(200).json({ product })
+
+    } catch (error) {
+
+    }
+}
+exports.updateProduct = async (req, res) => {
+    const id = req.params.id
+    try {
+        const updatedProduct = await Product.findByIdAndUpdate(id)
+        res.status(200).json({
+            successMessage: `Product has succesfully updated!`,
+            updatedProduct
+        })
+    } catch (error) {
+
+    }
+}
 exports.deleteProduct = async (req, res) => {
     try {
         const products = await Product.findByIdAndDelete(req.params.id)
