@@ -12,7 +12,6 @@ export default function Updateproduct(props) {
   } = props;
   const dispatch = useDispatch();
   const [updateProduct, setUpdateProduct] = useState(data);
-  console.log(data);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUpdateProduct({
@@ -29,6 +28,9 @@ export default function Updateproduct(props) {
       productDescription: updateProduct.productDescription,
       productQty: updateProduct.productQty,
     };
+    // setUpdateProduct({
+    //   updateProduct: params,
+    // });
     dispatch(handleUpdateProduct(id, params));
   };
 

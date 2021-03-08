@@ -49,9 +49,14 @@ exports.getProductById = async (req, res) => {
     }
 }
 exports.updateProduct = async (req, res) => {
+    const { productName, productPrice, productDescription, productQty } = req.body
     const id = req.params.id
     try {
-        const updatedProduct = await Product.findByIdAndUpdate(id)
+        let updatedProduct = await Product.findByIdAndUpdate(id, req.body)
+        // updatedProduct.productName = productName
+        // updatedProduct.productPrice = productPrice
+        // updatedProduct.productDescription = productDescription
+        // updatedProduct.productQty = productQty
         res.status(200).json({
             successMessage: `Product has succesfully updated!`,
             updatedProduct
