@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "redux/actions/productActions";
 import { getCategories } from "redux/actions/categoryAction";
 import { getUsers } from "redux/actions/userActions";
+import axios from "axios";
 export default function DashboardCards() {
   const { products } = useSelector((state) => state.products);
   const { categories } = useSelector((state) => state.categories);
@@ -14,6 +15,9 @@ export default function DashboardCards() {
     dispatch(getProducts());
     dispatch(getCategories());
     dispatch(getUsers());
+    axios.get("/api/orders").then((res) => {
+      console.log("orders", res);
+    });
   }, [dispatch]);
 
   return (
