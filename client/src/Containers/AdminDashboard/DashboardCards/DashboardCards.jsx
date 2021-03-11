@@ -4,20 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "redux/actions/productActions";
 import { getCategories } from "redux/actions/categoryAction";
 import { getUsers } from "redux/actions/userActions";
-import axios from "axios";
+import { getAllOrders } from "redux/actions/orderAction";
 export default function DashboardCards() {
   const { products } = useSelector((state) => state.products);
   const { categories } = useSelector((state) => state.categories);
   const { users } = useSelector((state) => state.users);
-
+  const { orders } = useSelector((state) => state.orders);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getCategories());
     dispatch(getUsers());
-    axios.get("/api/orders").then((res) => {
-      console.log("orders", res);
-    });
+    dispatch(getAllOrders());
   }, [dispatch]);
 
   return (
@@ -54,7 +52,7 @@ export default function DashboardCards() {
             <div className="card-body">
               <h5 className="text-muted">Orders</h5>
 
-              <h3 className="card-title">1</h3>
+              <h3 className="card-title">{orders.length}</h3>
             </div>
           </div>
         </div>

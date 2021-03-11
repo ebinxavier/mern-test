@@ -50,6 +50,11 @@ export default function Sidebar() {
                   Create Category
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="#" className="text-white">
+                  Orders
+                </NavLink>
+              </li>
             </>
           )}
         </ul>

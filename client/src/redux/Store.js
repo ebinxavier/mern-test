@@ -6,12 +6,14 @@ import MessageReducer from './reducers/messageReducer'
 import CategoryReducer from './reducers/categoryReducer'
 import ProductReducer from "./reducers/productReducer"
 import userReducer from "./reducers/usersReducer"
+import orderReducer from "./reducers/orderReducer"
 const reducer = combineReducers({
     loading: loadingReducer,
     messages: MessageReducer,
     categories: CategoryReducer,
     products: ProductReducer,
-    users: userReducer
+    users: userReducer,
+    orders: orderReducer
 })
 
 const initialState = {}
