@@ -8,7 +8,7 @@ exports.createOrder = async (req, res) => {
         order.orderBy = orderBy
         order.categoryName = categoryName
         order.productName = productName
-        order.save()
+        order.save();
         res.send(200).json({
             successMessage: 'succes!',
             order

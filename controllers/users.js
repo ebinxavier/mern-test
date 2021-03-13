@@ -28,3 +28,15 @@ exports.putUsers = (req, res) => {
 exports.deleteUsers = (req, res) => {
     User.findByIdAndDelete(req.params.id).then(() => res.json("User has been succesfully deleted!"))
 }
+
+exports.searchUsers = (req, res) => {
+    const username = req.query.username
+    console.log(username)
+    // User.find({ q: { $regex: query, $options: '$i' } })
+    User.find({ username: { $regex: username, $options: 'i' } })
+        .then(data => res.send(data)
+        )
+        .catch(err => {
+            console.log(err)
+        })
+}
