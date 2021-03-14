@@ -55,6 +55,15 @@ export default function Sidebar() {
                   Orders
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="/admin/users"
+                  activeClassName="sidebar-active"
+                  className="text-white"
+                >
+                  Users
+                </NavLink>
+              </li>
             </>
           )}
         </ul>
