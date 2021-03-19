@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Search } from "react-bootstrap-icons";
 import Sidebar from "components/Sidebar";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getUsers, searchUsers } from "redux/actions/userActions";
+import Loader from "components/Loaders";
 import "./Users.css";
 export default function Users() {
   const { users } = useSelector((state) => state.users);
-  const [loading, setLoading] = useState(true);
+  console.log(useSelector((data) => data));
+  const dispatch = useDispatch();
+  const [query, setQuery] = useState("");
+  const { loading } = useSelector((loading) => loading);
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
 
+  const handleSearch = () => {
+    dispatch(searchUsers(query));
+  };
+  console.log(loading);
   return (
     <div className="d-flex w-100">
       <div className="row w-100">
@@ -19,9 +31,10 @@ export default function Users() {
                 type="text"
                 class="search-input"
                 placeholder="Search..."
-                name=""
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
               />{" "}
-              <a href="#" class="search-icon">
+              <a href="#" class="search-icon" onClick={handleSearch}>
                 {" "}
                 <Search style={{ fontSize: 18 }} />
               </a>{" "}
@@ -41,6 +54,7 @@ export default function Users() {
                 <h4 className="table-title">Actions</h4>
               </div>
             </div>
+
             {users.length > 0
               ? users.map((user, index) => (
                   <div className="row table-container" key={index}>
