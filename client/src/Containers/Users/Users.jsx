@@ -4,6 +4,8 @@ import Sidebar from "components/Sidebar";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsers, searchUsers } from "redux/actions/userActions";
 import Loader from "components/Loaders";
+import DeleteButton from "Common/Buttons/DeleteButton";
+import EditButton from "Common/Buttons/EditButton";
 import "./Users.css";
 export default function Users() {
   const { users } = useSelector((state) => state.users);
@@ -18,7 +20,12 @@ export default function Users() {
   const handleSearch = () => {
     dispatch(searchUsers(query));
   };
-  console.log(loading);
+  const handleDelete = () => {
+    console.log("delete btn");
+  };
+  const handleEdit = () => {
+    console.log("edit btn");
+  };
   return (
     <div className="d-flex w-100">
       <div className="row w-100">
@@ -40,7 +47,7 @@ export default function Users() {
               </a>{" "}
             </div>
 
-            <div className="row table-header">
+            <div className="row table-header w-100">
               <div className="col-md-3">
                 <h4 className="table-title">Username</h4>
               </div>
@@ -57,12 +64,17 @@ export default function Users() {
 
             {users.length > 0
               ? users.map((user, index) => (
-                  <div className="row table-container" key={index}>
+                  <div className="row table-container w-100" key={index}>
                     <div className="col-md-3">{user.username}</div>
                     <div className="col-md-3">{user.email}</div>
-                    <div className="col-md-3">action tb here</div>
                     <div className="col-md-3">
                       {user.role === 1 ? "Admin" : "User"}
+                    </div>
+                    <div className="col-md-3">
+                      <div className="d-flex">
+                        <DeleteButton onClick={() => handleDelete()} />
+                        <EditButton onClick={() => handleEdit()} />
+                      </div>
                     </div>
                   </div>
                 ))
