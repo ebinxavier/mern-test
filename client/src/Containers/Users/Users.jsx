@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Search } from "react-bootstrap-icons";
 import Sidebar from "components/Sidebar";
 import { useSelector, useDispatch } from "react-redux";
-import { getUsers, searchUsers } from "redux/actions/userActions";
+import { getUsers, searchUsers, deleteUser } from "redux/actions/userActions";
 import Loader from "components/Loaders";
 import DeleteButton from "Common/Buttons/DeleteButton";
 import EditButton from "Common/Buttons/EditButton";
 import "./Users.css";
-export default function Users() {
+export default function Users(props) {
   const { users } = useSelector((state) => state.users);
   console.log(useSelector((data) => data));
   const dispatch = useDispatch();
@@ -20,11 +20,17 @@ export default function Users() {
   const handleSearch = () => {
     dispatch(searchUsers(query));
   };
-  const handleDelete = () => {
+  const handleDelete = (id) => {
     console.log("delete btn");
+    dispatch(deleteUser(id));
   };
-  const handleEdit = () => {
-    console.log("edit btn");
+  const handleEdit = (data, id) => {
+    props.history.push({
+      pathname: "/admin/users/update/" + id,
+      state: {
+        data,
+      },
+    });
   };
   return (
     <div className="d-flex w-100">
@@ -72,8 +78,10 @@ export default function Users() {
                     </div>
                     <div className="col-md-3">
                       <div className="d-flex">
-                        <DeleteButton onClick={() => handleDelete()} />
-                        <EditButton onClick={() => handleEdit()} />
+                        <DeleteButton onClick={() => handleDelete(user._id)} />
+                        <EditButton
+                          onClick={() => handleEdit(user, user._id)}
+                        />
                       </div>
                     </div>
                   </div>

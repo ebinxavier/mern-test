@@ -148,7 +148,7 @@ export default function Products(props) {
                       name="name"
                       value={productData.name}
                       onChange={handleChange}
-                      className="form-control"
+                      className="form-control auth-inputs"
                     />
                     {productErrors.name && (
                       <Alert errorrMessage={productErrors.name} />
@@ -161,7 +161,7 @@ export default function Products(props) {
                       name="price"
                       value={productData.price}
                       onChange={handleChange}
-                      className="form-control"
+                      className="form-control auth-inputs"
                     />
                     {productErrors.price && (
                       <Alert errorrMessage={productErrors.price} />
@@ -173,7 +173,7 @@ export default function Products(props) {
                     </label>
                     <input
                       type="file"
-                      className="form-control"
+                      className="form-control auth-inputs"
                       name="productImage"
                       id="customFile"
                       onChange={handleFile}
@@ -191,14 +191,14 @@ export default function Products(props) {
                       name="description"
                       value={productData.description}
                       onChange={handleChange}
-                      className="form-control"
+                      className="form-control auth-inputs"
                     />
                   </div>
                   <div className="form-group">
                     <label>Category</label>
                     <select
                       type="text"
-                      className="form-control"
+                      className="form-control auth-inputs"
                       name="category"
                       value={productData.category}
                       onChange={handleChange}
@@ -221,7 +221,7 @@ export default function Products(props) {
                       name="quantity"
                       value={productData.quantity}
                       onChange={handleChange}
-                      className="form-control"
+                      className="form-control auth-inputs"
                     />
                     {productErrors.quantity && (
                       <Alert errorrMessage={productErrors.quantity} />

@@ -1,4 +1,4 @@
-import { GET_USERS, SEARCH_USERS } from "../types/usersTypes"
+import { GET_USERS, SEARCH_USERS, DELETE_USER } from "../types/usersTypes"
 
 
 const initialState = {
@@ -18,6 +18,10 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 users: [...action.payload]
+            }
+        case DELETE_USER:
+            return {
+                users: state.users.filter(id => id !== action.payload._id)
             }
         default: return state
     }

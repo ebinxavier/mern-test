@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_USERS, SEARCH_USERS } from '../types/usersTypes'
+import { GET_USERS, SEARCH_USERS, DELETE_USER } from '../types/usersTypes'
 import { START_LOADING, STOP_LOADING } from "../types/loadingTypes"
 export const getUsers = () => async dispatch => {
     try {
@@ -32,7 +32,25 @@ export const searchUsers = (query) => async dispatch => {
             type: SEARCH_USERS,
             payload: response.data
         })
+        dispatch({
+            type: STOP_LOADING
+        })
     } catch (error) {
 
     }
+}
+
+export const deleteUser = (id) => async dispatch => {
+    dispatch({
+        type: START_LOADING
+    })
+    const response = await axios.delete('/api/users/' + id)
+    dispatch({
+        type: DELETE_USER,
+        payload: response.data
+    })
+    dispatch({
+        type: STOP_LOADING
+    })
+    console.log(id)
 }

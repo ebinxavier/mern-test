@@ -54,7 +54,7 @@ export default function Updateproduct(props) {
                     <input
                       type="text"
                       name="productName"
-                      className="form-control"
+                      className="form-control auth-inputs"
                       value={updateProduct.productName}
                       onChange={handleChange}
                     />
@@ -64,7 +64,7 @@ export default function Updateproduct(props) {
                     <input
                       type="number"
                       name="productPrice"
-                      className="form-control"
+                      className="form-control auth-inputs"
                       value={updateProduct.productPrice}
                       onChange={handleChange}
                     />
@@ -75,7 +75,7 @@ export default function Updateproduct(props) {
                     </label>
                     <input
                       type="file"
-                      className="form-control"
+                      className="form-control auth-inputs"
                       name="productImage"
                       id="customFile"
                     />
@@ -87,7 +87,7 @@ export default function Updateproduct(props) {
                     <input
                       type="text"
                       name="productDescription"
-                      className="form-control"
+                      className="form-control auth-inputs"
                       value={updateProduct.productDescription}
                       onChange={handleChange}
                     />
@@ -115,7 +115,7 @@ export default function Updateproduct(props) {
                     <input
                       type="number"
                       name="productQty"
-                      className="form-control"
+                      className="form-control auth-inputs"
                       value={updateProduct.productQty}
                       onChange={handleChange}
                     />

@@ -37,6 +37,10 @@ exports.searchUsers = (req, res) => {
         .then(data => res.send(data)
         )
         .catch(err => {
+            res.status(500).json({
+                err
+            })
             console.log(err)
         })
+
 }

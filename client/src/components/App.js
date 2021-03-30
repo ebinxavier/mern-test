@@ -13,6 +13,7 @@ import CreateProduct from "../Containers/AdminDashboard/Products/Products"
 import Products from "Containers/AdminDashboard/Products/GetProducts"
 import UpdateProducts from "Containers/AdminDashboard/Products/UpdateProduct/Updateproduct"
 import Users from "Containers/Users"
+import UpdateUser from "Containers/Users/UpdateUser"
 import './App.css'
 export default function App() {
   return (
@@ -33,8 +34,8 @@ export default function App() {
 
           <AdminRoutes path="/admin/products/create" component={CreateProduct} />
           <AdminRoutes path="/admin/products" component={Products} />
+          <AdminRoutes path="/admin/users/update/:id" component={UpdateUser} />
           <AdminRoutes path="/admin/users" component={Users} />
-
 
           <UserRoutes path="/dashboard" component={UserDashboard} />
 
