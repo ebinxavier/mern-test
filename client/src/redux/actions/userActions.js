@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_USERS, SEARCH_USERS, DELETE_USER } from '../types/usersTypes'
+import { GET_USERS, SEARCH_USERS, DELETE_USER, UPDATE_USER } from '../types/usersTypes'
 import { START_LOADING, STOP_LOADING } from "../types/loadingTypes"
 export const getUsers = () => async dispatch => {
     try {
@@ -53,4 +53,19 @@ export const deleteUser = (id) => async dispatch => {
         type: STOP_LOADING
     })
     console.log(id)
+}
+
+
+export const updateUser = (id) => async dispatch => {
+    dispatch({
+        type: START_LOADING
+    })
+    const response = await axios.put('/api/users/' + id)
+    dispatch({
+        type: UPDATE_USER,
+        payload: response.data
+    })
+    dispatch({
+        type: STOP_LOADING
+    })
 }

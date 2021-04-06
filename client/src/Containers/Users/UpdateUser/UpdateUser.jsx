@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ArrowLeft } from "react-bootstrap-icons";
-
+import { useDispatch } from "react-redux";
+import { updateUser } from "redux/actions/userActions";
 export default function UpdateUser(props) {
+  const dispatch = useDispatch();
   const {
     history: {
       location: {
@@ -9,7 +11,13 @@ export default function UpdateUser(props) {
       },
     },
   } = props;
-
+  useEffect(() => {
+    return () => {};
+  }, [data]);
+  const onSubmit = () => {
+    const data = {};
+    dispatch(updateUser(data));
+  };
   return (
     <>
       <div className="header-bar">
