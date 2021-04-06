@@ -3,7 +3,8 @@ const { ObjectId } = mongoose.Schema
 
 const orders = new mongoose.Schema({
     orderBy: {
-        type: String
+        type: ObjectId,
+        ref: 'users'
     },
 
     productName: {
@@ -12,7 +13,20 @@ const orders = new mongoose.Schema({
 
         required: true,
         ref: 'Product'
-    }
+    },
+    isPurchased: {
+        type: Boolean,
+        required: true,
+        default: false,
+    },
+    isDelivered: {
+        type: Boolean,
+        required: true,
+        default: false,
+    },
+    shippingAddress: {
+        type: "object",
+    },
 },
     { timestamps: true }
 )

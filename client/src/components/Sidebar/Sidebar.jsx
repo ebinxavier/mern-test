@@ -55,6 +55,15 @@ export default function Sidebar() {
                   Orders
                 </NavLink>
               </li>
+                <li>
+                <NavLink
+              to="#"
+              
+                  className="text-white"
+                >
+                  Discounts
+                </NavLink>
+              </li>
               <li>
                 <NavLink
                   to="/admin/users"
