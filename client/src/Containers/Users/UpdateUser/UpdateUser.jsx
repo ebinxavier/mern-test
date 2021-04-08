@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowLeft } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import { updateUser } from "redux/actions/userActions";
+import { useSelector } from "react-redux";
 export default function UpdateUser(props) {
   const dispatch = useDispatch();
   const {
@@ -11,12 +12,31 @@ export default function UpdateUser(props) {
       },
     },
   } = props;
+  const [updateUserData, setUpdateUser] = useState(data);
+  const { loading } = useSelector((state) => state.loading);
+
   useEffect(() => {
     return () => {};
-  }, [data]);
-  const onSubmit = () => {
-    const data = {};
-    dispatch(updateUser(data));
+  }, [updateUserData]);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const id = updateUserData._id;
+    const data = {
+      username: updateUserData.username,
+      email: updateUserData.email,
+      role: updateUserData.role,
+    };
+    dispatch(updateUser(id, data));
+  };
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setUpdateUser({
+      ...updateUserData,
+      [name]: value,
+    });
+    console.log(value);
+    console.log(name, "nm");
   };
   return (
     <>
@@ -37,9 +57,10 @@ export default function UpdateUser(props) {
                     <label>Username</label>
                     <input
                       type="text"
-                      name="productName"
+                      name="username"
                       className="form-control auth-inputs"
-                      value={data.username}
+                      value={updateUserData.username}
+                      onChange={handleOnChange}
                     />
                   </div>
                 </div>
@@ -48,9 +69,10 @@ export default function UpdateUser(props) {
                     <label>Email</label>
                     <input
                       type="text"
-                      name="productDescription"
+                      name="email"
                       className="form-control auth-inputs"
-                      value={data.email}
+                      value={updateUserData.email}
+                      onChange={handleOnChange}
                     />
                   </div>
                 </div>
@@ -59,10 +81,7 @@ export default function UpdateUser(props) {
                 <div className="col-md-12 col-sm-12 col-xs-12 col-lg-12">
                   <div className="form-group">
                     <label>Role</label>
-                    <select
-                      value={data.role}
-                      className="form-control auth-inputs"
-                    >
+                    <select name="role" className="form-control auth-inputs">
                       <option value={data.role}>
                         {data.role === 1 ? "Admin" : "User"}
                       </option>
@@ -71,20 +90,20 @@ export default function UpdateUser(props) {
                 </div>
               </div>
               <div className="row justify-content-center mt-3">
-                {/* <button className="btn purple-btn" onClick={onSubmit}>
-                {loading ? (
-                  <>
-                    <span className="mr-2">Loading...</span>
-                    <div
-                      class="spinner-border text-white"
-                      style={{ width: 20, height: 20 }}
-                      role="status"
-                    />
-                  </>
-                ) : (
-                  "Create"
-                )}
-              </button> */}
+                <button className="btn purple-btn" onClick={onSubmit}>
+                  {loading ? (
+                    <>
+                      <span className="mr-2">Loading...</span>
+                      <div
+                        class="spinner-border text-white"
+                        style={{ width: 20, height: 20 }}
+                        role="status"
+                      />
+                    </>
+                  ) : (
+                    "Update"
+                  )}
+                </button>
               </div>
             </div>
           </form>

@@ -14,6 +14,7 @@ import Products from "Containers/AdminDashboard/Products/GetProducts"
 import UpdateProducts from "Containers/AdminDashboard/Products/UpdateProduct/Updateproduct"
 import Users from "Containers/Users"
 import UpdateUser from "Containers/Users/UpdateUser"
+import Categories from 'Containers/AdminDashboard/Category/AllCategories'
 import './App.css'
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/" exact component={Login} />
           <Route path="/signup" component={SignUp} />
           <AdminRoutes path="/admin/dashboard" component={AdminDashboard} />
+          <AdminRoutes path="/admin/category" component={Categories} />
           <AdminRoutes path="/admin/category/create" component={Category} />
           <AdminRoutes path="/admin/products/update/:id" component={UpdateProducts} />
           {/* <Route

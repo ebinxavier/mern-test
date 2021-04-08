@@ -56,11 +56,11 @@ export const deleteUser = (id) => async dispatch => {
 }
 
 
-export const updateUser = (id) => async dispatch => {
+export const updateUser = (id, data) => async dispatch => {
     dispatch({
         type: START_LOADING
     })
-    const response = await axios.put('/api/users/' + id)
+    const response = await axios.put('/api/users/' + id, data)
     dispatch({
         type: UPDATE_USER,
         payload: response.data
