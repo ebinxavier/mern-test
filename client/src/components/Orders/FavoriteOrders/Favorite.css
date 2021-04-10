@@ -1,0 +1,21 @@
+.orders-wrapper {
+  background: #fff;
+  -webkit-box-shadow: 0 1px 6px 1px rgb(69 65 78 / 10%);
+  -moz-box-shadow: 0 1px 6px 1px rgba(69, 65, 78, 0.1);
+  box-shadow: 0 1px 6px 1px rgb(69 65 78 / 10%);
+  margin-bottom: 30px;
+  height: calc(100% - 2rem);
+}
+.order-title {
+  position: relative;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.order-statistics {
+  position: relative;
+  padding: 1.5rem;
+}
+.main {
+  padding: 45px;
+}

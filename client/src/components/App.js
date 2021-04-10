@@ -15,6 +15,7 @@ import UpdateProducts from "Containers/AdminDashboard/Products/UpdateProduct/Upd
 import Users from "Containers/Users"
 import UpdateUser from "Containers/Users/UpdateUser"
 import Categories from 'Containers/AdminDashboard/Category/AllCategories'
+import Orders from "Containers/Orders"
 import './App.css'
 export default function App() {
   return (
@@ -29,15 +30,11 @@ export default function App() {
           <AdminRoutes path="/admin/category" component={Categories} />
           <AdminRoutes path="/admin/category/create" component={Category} />
           <AdminRoutes path="/admin/products/update/:id" component={UpdateProducts} />
-          {/* <Route
-            path="/admin/products/update/:id"
-            render={props => <UpdateProducts text="Hello, " {...props} />}
-          /> */}
-
           <AdminRoutes path="/admin/products/create" component={CreateProduct} />
           <AdminRoutes path="/admin/products" component={Products} />
           <AdminRoutes path="/admin/users/update/:id" component={UpdateUser} />
           <AdminRoutes path="/admin/users" component={Users} />
+          <AdminRoutes path="/admin/orders" component={Orders} />
 
           <UserRoutes path="/dashboard" component={UserDashboard} />
 
