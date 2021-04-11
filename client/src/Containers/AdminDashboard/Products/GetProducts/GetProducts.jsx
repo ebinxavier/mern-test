@@ -3,6 +3,8 @@ import Sidebar from "components/Sidebar";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts, deleteProduct } from "redux/actions/productActions";
 import { useHistory } from "react-router-dom";
+import DeleteButton from "Common/Buttons/DeleteButton";
+import EditButton from "Common/Buttons/EditButton";
 export default function GetProducts(props) {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -57,7 +59,7 @@ export default function GetProducts(props) {
                           ? product.productDescription.substring(0, 60) + "..."
                           : product.productDescription.substring(0, 60)}
                       </p>
-                      <a
+                      <EditButton
                         // onClick={() => handleEdit(product._id)}
                         onClick={() =>
                           props.history.push({
@@ -67,13 +69,14 @@ export default function GetProducts(props) {
                             },
                           })
                         }
-                        className="btn btn-primary"
                       >
                         Edit
-                      </a>
-                      <a onClick={() => handleProductDelete(product._id)}>
+                      </EditButton>
+                      <DeleteButton
+                        onClick={() => handleProductDelete(product._id)}
+                      >
                         delete
-                      </a>
+                      </DeleteButton>
                     </div>
                   </div>
                 </div>

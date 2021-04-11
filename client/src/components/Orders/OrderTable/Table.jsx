@@ -8,6 +8,7 @@ export default function Table() {
     dispatch(getAllOrders());
   }, []);
   const { orders } = useSelector((state) => state.orders);
+  console.log(orders);
   return (
     <div className="container">
       <div className="row" style={{ padding: "15px 45px" }}>
@@ -34,7 +35,7 @@ export default function Table() {
                           <td>{order.productName?.productName}</td>
                           <td>{order.productName?.productPrice + " " + "$"}</td>
                           <td>{moment(order.createdAt).format("LLL")}</td>
-                          <td>{order.isPurchased}</td>
+                          <td>{order.isPurchased + ""}</td>
                         </tr>
                       ))
                     : "No orders"}
