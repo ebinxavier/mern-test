@@ -9,6 +9,7 @@ const categoryRoutes = require('./routes/category')
 const product = require('./routes/product')
 const users = require('./routes/users')
 const orders = require('./routes/orders')
+const reviews = require('./routes/reviews')
 dotenv.config()
 //middlewares
 app.use(cors())
@@ -20,6 +21,7 @@ app.use('/api/category', categoryRoutes)
 app.use('/api/product', product)
 app.use('/api/users', users)
 app.use('/api', orders)
+app.use('/api', reviews)
 app.use('/uploads', express.static('uploads'))
 
 connectDb();
