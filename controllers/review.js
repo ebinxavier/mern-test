@@ -1,5 +1,5 @@
 const Review = require('../models/Reviews')
-
+const Products = require('../models/Product')
 exports.createReview = async (req, res) => {
     const { reviewedBy, comment, review, ratting, product } = req.body;
     try {
@@ -37,5 +37,37 @@ exports.getReview = async (req, res) => {
         res.json({ review })
     } catch (error) {
         res.status(500).json({ error })
+    }
+}
+
+exports.calculateProductReviewAverage = async (req, res, product) => {
+    const productAverageReview = await Review.aggregate([
+        {
+            $match: { product }
+        },
+        {
+            $group: {
+                _id: '$product',
+                nrRating: { $sum: 1 },
+                avgRating: { $avg: '$ratting' }
+            }
+        },
+        // { $unwind: "$productAverageReview" }
+
+    ])
+
+    const favoriteOrder = productAverageReview.filter(data => {
+        const { avgRating } = data
+        const favorite = avgRating.toFixed(1) >= 4
+        return favorite;
+    })
+
+
+    if (favoriteOrder.length > 0) {
+
+        res.json({ favoriteOrder })
+    }
+    else {
+        res.json('No favorite orders')
     }
 }
