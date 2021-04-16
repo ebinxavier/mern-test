@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { getFavoriteReviews } from "redux/actions/reviewsAction";
 import "./Favorite.css";
 export default function Favorite() {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getAllOrders());
-  // }, []);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getFavoriteReviews());
+  }, []);
   return (
     <div className="container">
       <div className="row main">
