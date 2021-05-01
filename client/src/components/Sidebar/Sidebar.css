@@ -1,7 +1,8 @@
 .sidebar {
   background: #b39cd0;
   transition: all 0.3s;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 }
 .sidebar ul li a {
   color: #fbeaff;

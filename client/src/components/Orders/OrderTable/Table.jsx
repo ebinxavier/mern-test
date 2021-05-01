@@ -8,7 +8,6 @@ export default function Table() {
     dispatch(getAllOrders());
   }, []);
   const { orders } = useSelector((state) => state.orders);
-  console.log(orders);
   return (
     <div className="container">
       <div className="row" style={{ padding: "15px 45px" }}>

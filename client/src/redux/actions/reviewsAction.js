@@ -4,20 +4,16 @@ import axios from 'axios'
 
 
 
-export const getFavoriteReviews = () => async dispatch => {
+export const GetFavoriteReviews = () => async dispatch => {
 
-    dispatch({
-        type: START_LOADING
-    })
+    try {
+        dispatch({ type: START_LOADING })
+        const response = await axios.get('/api/reviews/average')
+        dispatch({ type: GET_FAVORITE_REVIEWS, payload: response.data.favoriteOrder })
+        dispatch({ type: STOP_LOADING })
 
-    const response = await axios.get('/api/reviews/average')
-    dispatch({
-        type: GET_FAVORITE_REVIEWS,
-        payload: response.data
-    })
-
-    dispatch({
-        type: STOP_LOADING
-    })
+    } catch (error) {
+        console.log(error)
+    }
 
 }

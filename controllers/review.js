@@ -49,16 +49,25 @@ exports.calculateProductReviewAverage = async (req, res, product) => {
             $group: {
                 _id: '$product',
                 nrRating: { $sum: 1 },
-                avgRating: { $avg: '$ratting' }
-            }
+                avgRating: { $avg: '$ratting' },
+            },
+
         },
+        {
+            $lookup: {
+                from: "products",
+                localField: "_id",
+                foreignField: "_id",
+                as: "products"
+            }
+        }
         // { $unwind: "$productAverageReview" }
 
     ])
 
     const favoriteOrder = productAverageReview.filter(data => {
         const { avgRating } = data
-        const favorite = avgRating.toFixed(1) >= 4
+        const favorite = avgRating.toFixed() >= 4
         return favorite;
     })
 
