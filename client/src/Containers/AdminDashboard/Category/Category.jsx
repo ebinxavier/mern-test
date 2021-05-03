@@ -61,7 +61,7 @@ export default function Category() {
                 <>
                   <span className="mr-2">Loading...</span>
                   <div
-                    class="spinner-border text-white"
+                    className="spinner-border text-white"
                     style={{ width: 20, height: 20 }}
                     role="status"
                   />

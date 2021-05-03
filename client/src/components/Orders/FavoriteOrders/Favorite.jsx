@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GetFavoriteReviews } from "redux/actions/reviewsAction";
 import "./Favorite.css";
-import axios from "axios";
+import ProductRattings from "components/Ratings";
 export default function Favorite() {
   const { reviews } = useSelector((data) => data.reviews);
 
@@ -10,6 +10,7 @@ export default function Favorite() {
   useEffect(() => {
     dispatch(GetFavoriteReviews());
   }, []);
+
   return (
     <div className="container">
       <div className="row main">
@@ -41,6 +42,18 @@ export default function Favorite() {
                               </div>
                             </div>
                           </div>
+
+                          {[1, 2, 3, 4, 5].map((index) => {
+                            return (
+                              <ProductRattings
+                                rating={favorite.avgRating.toFixed()}
+                                index={index}
+                                onMouseEnter={() => console.log("hi")}
+                                onMouseLeave={() => console.log("leave")}
+                                onSaveRating={() => console.log("save")}
+                              />
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
