@@ -19,7 +19,6 @@ export default function Favorite() {
             <div className="order-title">
               <h2>Favorite Orders</h2>
             </div>
-            {console.log(reviews)}
             <div className="order-statistics">
               {reviews.length > 0
                 ? reviews.map((favorite, index) => (
@@ -44,15 +43,19 @@ export default function Favorite() {
                           </div>
 
                           {[1, 2, 3, 4, 5].map((index) => {
-                            return (
-                              <ProductRattings
-                                rating={favorite.avgRating.toFixed()}
-                                index={index}
-                                onMouseEnter={() => console.log("hi")}
-                                onMouseLeave={() => console.log("leave")}
-                                onSaveRating={() => console.log("save")}
-                              />
-                            );
+                            if (index == favorite.avgRating.toFixed()) {
+                              console.log(index, "here");
+
+                              return (
+                                <ProductRattings
+                                  rating={favorite.avgRating.toFixed()}
+                                  index={index}
+                                  onMouseEnter={() => console.log("hi")}
+                                  onMouseLeave={() => console.log("leave")}
+                                  onSaveRating={() => console.log("save")}
+                                />
+                              );
+                            }
                           })}
                         </div>
                       </div>

@@ -123,7 +123,12 @@ export default function Updateproduct(props) {
                 </div>
               </div>
               <div className="row justify-content-center mt-3">
-                <button onClick={handleUpdate}>update</button>
+                <button
+                  className="btn btn-primary purple-btn"
+                  onClick={handleUpdate}
+                >
+                  Update
+                </button>
                 {/* <button className="btn purple-btn" onClick={onSubmit}>
                 {loading ? (
                   <>

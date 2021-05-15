@@ -34,3 +34,14 @@ exports.getAll = async (req, res) => {
     }
 
 }
+
+exports.delete = async (req, res) => {
+    const id = req.params.id
+    try {
+        await Category.findByIdAndDelete(id)
+        res.send('Category successfully deleted!')
+
+    } catch (error) {
+        res.status(500).send(error)
+    }
+}
