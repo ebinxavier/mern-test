@@ -27,8 +27,8 @@ export default function App() {
           <Route path="/" exact component={Login} />
           <Route path="/signup" component={SignUp} />
           <AdminRoutes path="/admin/dashboard" component={AdminDashboard} />
-          <AdminRoutes path="/admin/category" component={Categories} />
           <AdminRoutes path="/admin/category/create" component={Category} />
+          <AdminRoutes path="/admin/category" component={Categories} />
           <AdminRoutes path="/admin/products/update/:id" component={UpdateProducts} />
           <AdminRoutes path="/admin/products/create" component={CreateProduct} />
           <AdminRoutes path="/admin/products" component={Products} />

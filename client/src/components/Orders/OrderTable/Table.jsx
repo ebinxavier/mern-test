@@ -34,7 +34,17 @@ export default function Table() {
                           <td>{order.productName?.productName}</td>
                           <td>{order.productName?.productPrice + " " + "$"}</td>
                           <td>{moment(order.createdAt).format("LLL")}</td>
-                          <td>{order.isPurchased + ""}</td>
+                          <td>
+                            <span
+                              className={
+                                order.isPurchased === true
+                                  ? "badge bg-soft-success text-success"
+                                  : "badge bg-soft-danger text-danger"
+                              }
+                            >
+                              {order.isPurchased + ""}
+                            </span>
+                          </td>
                         </tr>
                       ))
                     : "No orders"}

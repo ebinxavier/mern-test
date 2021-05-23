@@ -60,7 +60,6 @@ export default function GetProducts(props) {
                           : product.productDescription.substring(0, 60)}
                       </p>
                       <EditButton
-                        // onClick={() => handleEdit(product._id)}
                         onClick={() =>
                           props.history.push({
                             pathname: "/admin/products/update/" + product._id,

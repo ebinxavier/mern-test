@@ -4,9 +4,14 @@ import Sidebar from "components/Sidebar";
 import DeleteButton from "Common/Buttons/DeleteButton";
 import EditButton from "Common/Buttons/EditButton";
 import "./AllCategories.css";
+import { deleteCategory } from "redux/actions/categoryAction";
 export default function AllCategories() {
+  const dispatch = useDispatch();
   const { categories } = useSelector((data) => data.categories);
-  console.log(categories, "data");
+
+  const handleDelete = (id) => {
+    dispatch(deleteCategory(id));
+  };
   return (
     <div className="row" style={{ width: "100%" }}>
       <Sidebar />
@@ -17,7 +22,7 @@ export default function AllCategories() {
                 <div className="category-card">
                   <h4>{category.category}</h4>
                   <EditButton />
-                  <DeleteButton />
+                  <DeleteButton onClick={() => handleDelete(category._id)} />
                 </div>
               </div>
             ))

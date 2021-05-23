@@ -30,6 +30,7 @@ export default function Category() {
     dispatch(createCategory(data));
     Swal.fire("Success!", successMessage, "success");
     setCategory("");
+    setLoading(false);
   };
   return (
     <div className="row" style={{ width: "100%" }}>

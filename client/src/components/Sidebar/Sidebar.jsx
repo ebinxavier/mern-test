@@ -24,6 +24,9 @@ export default function Sidebar() {
               <li>
                 <NavLink to="#">Dashboard</NavLink>
               </li>
+              <li>
+                <NavLink to="#">Profile</NavLink>
+              </li>
             </>
           )}
           {isAuthenticated() && isAuthenticated().role === 1 && (

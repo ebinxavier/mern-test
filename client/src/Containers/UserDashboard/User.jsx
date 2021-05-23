@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "../../components/Sidebar";
 import { isAuthenticated, logout } from "../../utils/auth";
 import { useHistory } from "react-router-dom";
-
+import ProductList from "../ProductsList";
 export default function User() {
   const history = useHistory();
   const handleLogout = () => {
@@ -19,6 +19,7 @@ export default function User() {
             Log out
           </button>
         </div>
+        <ProductList />
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { START_LOADING, STOP_LOADING, SHOW_SUCCESS_MESSAGE, SHOW_ERRORR_MESSAGE } from '../types/loadingTypes'
-import { GET_CATEGORIES, CREATE_CATEGORY } from '../types/categoryTypes'
+import { GET_CATEGORIES, CREATE_CATEGORY, DELETE_CATEGORY } from '../types/categoryTypes'
 import axios from 'axios'
 export const getCategories = () => async dispatch => {
     try {
@@ -52,4 +52,28 @@ export const createCategory = formData => async dispatch => {
     }
 }
 
+
+export const deleteCategory = (id) => async dispatch => {
+    try {
+        dispatch({
+            type: START_LOADING
+        })
+        const response = await axios.delete('/api/category/delete/' + id,)
+
+        dispatch({
+            type: DELETE_CATEGORY
+        })
+        dispatch({
+            type: SHOW_SUCCESS_MESSAGE, payload: response.data.successMessage
+        })
+        dispatch({
+            type: STOP_LOADING
+        })
+
+    } catch (error) {
+        dispatch({
+            type: STOP_LOADING
+        })
+    }
+}
 
