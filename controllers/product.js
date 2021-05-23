@@ -28,7 +28,7 @@ exports.create = async (req, res) => {
 exports.getAll = async (req, res) => {
     try {
         //pull data from other models
-        const products = await Product.find({}).populate('productCategory', 'category')
+        const products = await Product.find({}).populate('productCategory')
         res.status(200).json({
             products,
 

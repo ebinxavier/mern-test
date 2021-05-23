@@ -45,7 +45,9 @@ function ProductsList() {
                         </div> */}
                         <p>
                           Category:{" "}
-                          <span className="item">{product.category}</span>
+                          <span className="item">
+                            {product.productCategory?.category}
+                          </span>
                         </p>
                         <p>
                           Quantity:{" "}
