@@ -1,13 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts, deleteProduct } from "redux/actions/productActions";
+import { createOrder } from "redux/actions/orderAction";
 import "./ProductList.css";
 function ProductsList() {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
+  const [id, setID] = useState();
+
   useEffect(() => {
     dispatch(getProducts());
+    const user = JSON.parse(localStorage.getItem("user"));
+    const { _id } = user;
+    setID(_id);
   }, [dispatch]);
+
+  const handleOrder = (params) => {
+    const data = {
+      orderBy: id,
+      categoryName: params.categoryName,
+      productName: params._id,
+      isPurchased: true,
+      qty: 5,
+    };
+    dispatch(createOrder(id, data));
+  };
 
   return (
     <div className="row mt-5">
@@ -31,7 +48,6 @@ function ProductsList() {
                     <div className="col-md-7 col-xxl-12">
                       <div className="new-arrival-content position-relative">
                         <h4>{product.productName}</h4>
-                        {console.log(product, "pr")}
                         {/* <div className="comment-review star-rating">
                           <span className="review-text">(34 reviews) /</span>
                           <a
@@ -64,7 +80,12 @@ function ProductsList() {
                           {product.productDescription}
                         </p>
                       </div>
-                      <a className="order-btn">Order</a>
+                      <a
+                        onClick={() => handleOrder(product)}
+                        className="order-btn"
+                      >
+                        Order
+                      </a>
                     </div>
                   </div>
                 </div>
