@@ -16,6 +16,7 @@ import Users from "Containers/Users"
 import UpdateUser from "Containers/Users/UpdateUser"
 import Categories from 'Containers/AdminDashboard/Category/AllCategories'
 import Orders from "Containers/Orders"
+import UserOrders from "Containers/UserOrders"
 import './App.css'
 export default function App() {
   return (
@@ -37,6 +38,8 @@ export default function App() {
           <AdminRoutes path="/admin/orders" component={Orders} />
 
           <UserRoutes path="/dashboard" component={UserDashboard} />
+          <UserRoutes path="/orders" component={UserOrders} />
+
 
 
 

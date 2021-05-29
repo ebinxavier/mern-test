@@ -22,10 +22,17 @@ export default function Sidebar() {
           {isAuthenticated() && isAuthenticated().role === 0 && (
             <>
               <li>
-                <NavLink to="#">Dashboard</NavLink>
+                <NavLink to="/dashboard" activeClassName="sidebar-active">
+                  Dashboard
+                </NavLink>
               </li>
               <li>
                 <NavLink to="#">Profile</NavLink>
+              </li>
+              <li>
+                <NavLink to="/orders" activeClassName="sidebar-active">
+                  My Orders
+                </NavLink>
               </li>
             </>
           )}
