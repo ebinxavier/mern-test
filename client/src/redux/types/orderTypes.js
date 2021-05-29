@@ -1,3 +1,3 @@
 export const GET_ORDERS = 'GET_ORDERS'
-
 export const CREATE_ORDER = 'CREATE_ORDER'
+export const GET_ORDER_BY_CLIENT = 'GET_ORDER_BY_CLIENT'
