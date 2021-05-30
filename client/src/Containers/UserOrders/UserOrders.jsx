@@ -51,6 +51,7 @@ export default function UserOrders() {
                 </div>
                 <div className="col-md-4">
                   <button>Cancel</button>
+                  <button>Edit</button>
                 </div>
               </div>
             ))

@@ -49,3 +49,23 @@ exports.getOrderByUserName = async (req, res) => {
         console.log(error)
     }
 }
+
+exports.UpdateOrder = async (req, res) => {
+    const id = req.params.id
+    try {
+        const upDatedOrder = await Orders.findByIdAndUpdate(id, req.body)
+
+        res.json({ upDatedOrder })
+    } catch (error) {
+
+    }
+}
+
+exports.cancelOrder = async (req, res) => {
+    const id = req.params.id;
+    const canceled = {
+        isPurchased: false
+    }
+    Orders.findByIdAndUpdate(id, canceled).then(response => res.send(response)).catch(err => res.stauts(500).json({ err }))
+
+}
