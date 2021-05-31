@@ -1,0 +1,81 @@
+.product-title {
+  font-weight: 400;
+  font-size: 2.4rem;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.2rem;
+  margin-top: -0.5rem;
+  padding-right: 1rem;
+}
+.product .product-price {
+  font-size: 2.4rem;
+}
+.product-price {
+  display: flex;
+  align-items: center;
+  flex-flow: wrap;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.25;
+  color: #c96;
+  margin-bottom: 1.3rem;
+}
+.product .product-content {
+  margin-bottom: 1.6rem;
+}
+.product .product-content p:last-child {
+  margin-bottom: 0;
+}
+.quantity-filter-row {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  margin-bottom: 2rem;
+}
+.quantity-filter-row label {
+  display: inline-block;
+  width: 67px;
+  font-weight: 400;
+  margin-bottom: 0;
+  color: #666;
+  margin: 0 0 1.1rem;
+}
+.product-details-quantity {
+  max-width: 131px;
+  flex: 0 0 131px;
+}
+.product-details-quantity .form-control {
+  padding-left: 2.6rem;
+  padding-right: 2.6rem;
+  text-align: center;
+  margin-bottom: 0;
+}
+.input-spinner {
+  position: relative;
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+}
+.input-spinner .input-group-prepend {
+  left: 0;
+}
+.input-spinner .input-group-prepend,
+.input-spinner .input-group-append {
+  position: absolute;
+  top: 0;
+}
+.input-group-prepend {
+  margin-right: -1px;
+}
+.btn-spinner {
+  color: #333333;
+  padding: 1.25rem 0.4rem;
+  font-size: 1rem;
+  border: none;
+  background: none;
+  min-width: 26px;
+}

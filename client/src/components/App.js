@@ -18,6 +18,8 @@ import Categories from 'Containers/AdminDashboard/Category/AllCategories'
 import Orders from "Containers/Orders"
 import UserOrders from "Containers/UserOrders"
 import './App.css'
+import "react-responsive-modal/styles.css";
+
 export default function App() {
   return (
     <div>

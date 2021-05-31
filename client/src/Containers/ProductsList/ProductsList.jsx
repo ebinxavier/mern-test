@@ -2,19 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts, deleteProduct } from "redux/actions/productActions";
 import { createOrder } from "redux/actions/orderAction";
+import { Modal } from "react-responsive-modal";
+import OrderItem from "components/Orders/OrderItem";
 import "./ProductList.css";
 function ProductsList() {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
   const [id, setID] = useState();
-
+  const [open, setOpen] = useState(false);
+  const [product, setProduct] = useState();
   useEffect(() => {
     dispatch(getProducts());
     const user = JSON.parse(localStorage.getItem("user"));
     const { _id } = user;
     setID(_id);
   }, [dispatch]);
-
+  const handleOpenModal = (data) => {
+    setOpen(true);
+    setProduct(data);
+  };
   const handleOrder = (params) => {
     const data = {
       orderBy: id,
@@ -81,7 +87,7 @@ function ProductsList() {
                         </p>
                       </div>
                       <a
-                        onClick={() => handleOrder(product)}
+                        onClick={() => handleOpenModal(product)}
                         className="order-btn"
                       >
                         Order
@@ -93,6 +99,9 @@ function ProductsList() {
             </div>
           ))
         : ""}
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <OrderItem product={product} />
+      </Modal>
     </div>
   );
 }
