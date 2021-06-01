@@ -21,16 +21,6 @@ function ProductsList() {
     setOpen(true);
     setProduct(data);
   };
-  const handleOrder = (params) => {
-    const data = {
-      orderBy: id,
-      categoryName: params.categoryName,
-      productName: params._id,
-      isPurchased: true,
-      qty: 5,
-    };
-    dispatch(createOrder(id, data));
-  };
 
   return (
     <div className="row mt-5">
@@ -100,7 +90,7 @@ function ProductsList() {
           ))
         : ""}
       <Modal open={open} onClose={() => setOpen(false)}>
-        <OrderItem product={product} />
+        <OrderItem product={product} id={id} />
       </Modal>
     </div>
   );

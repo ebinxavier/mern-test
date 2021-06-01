@@ -49,33 +49,48 @@
   text-align: center;
   margin-bottom: 0;
 }
-.input-spinner {
-  position: relative;
-  position: relative;
-  display: -ms-flexbox;
+
+.quantity-control {
   display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  width: fit-content;
+  margin: 0 auto;
+  background: #eaeaea;
+  border-radius: 10px;
+  padding: 1rem 0.4rem;
+  /* margin-top: 4rem; */
 }
-.input-spinner .input-group-prepend {
-  left: 0;
-}
-.input-spinner .input-group-prepend,
-.input-spinner .input-group-append {
-  position: absolute;
-  top: 0;
-}
-.input-group-prepend {
-  margin-right: -1px;
-}
-.btn-spinner {
-  color: #333333;
-  padding: 1.25rem 0.4rem;
-  font-size: 1rem;
+
+.quantity-btn {
+  background: transparent;
   border: none;
-  background: none;
-  min-width: 26px;
+  outline: none;
+  margin: 0;
+  padding: 0px 8px;
+  cursor: pointer;
+}
+.quantity-btn i {
+  width: 15px;
+  height: 15px;
+}
+.quantity-input {
+  outline: none;
+  user-select: none;
+  text-align: center;
+  width: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+}
+.quantity-input::-webkit-inner-spin-button,
+.quantity-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.product-image {
+  width: 100%;
+  margin-top: 30px;
 }
