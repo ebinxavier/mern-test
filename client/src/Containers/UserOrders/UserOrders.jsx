@@ -1,6 +1,6 @@
 import Sidebar from "components/Sidebar/Sidebar";
 import React, { useEffect, useState } from "react";
-import { getOrderByClient } from "redux/actions/orderAction";
+import { getOrderByClient, cancelOrder } from "redux/actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 export default function UserOrders() {
@@ -14,6 +14,11 @@ export default function UserOrders() {
 
     dispatch(getOrderByClient(id));
   }, [id]);
+
+  const handleCancelOrder = (e, id) => {
+    e.preventDefault();
+    dispatch(cancelOrder(id));
+  };
   return (
     <div className="row w-100">
       <Sidebar />
@@ -50,7 +55,9 @@ export default function UserOrders() {
                   </span>
                 </div>
                 <div className="col-md-4">
-                  <button>Cancel</button>
+                  <button onClick={(e) => handleCancelOrder(e, order._id)}>
+                    Cancel
+                  </button>
                   <button>Edit</button>
                 </div>
               </div>

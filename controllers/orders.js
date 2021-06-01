@@ -66,6 +66,6 @@ exports.cancelOrder = async (req, res) => {
     const canceled = {
         isPurchased: false
     }
-    Orders.findByIdAndUpdate(id, canceled).then(response => res.send(response)).catch(err => res.stauts(500).json({ err }))
+    Orders.findByIdAndUpdate(id, canceled).then(response => res.send(response)).catch(err => res.status(500).json({ err }))
 
 }

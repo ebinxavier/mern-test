@@ -1,4 +1,4 @@
-import { GET_ORDERS, CREATE_ORDER, GET_ORDER_BY_CLIENT } from "../types/orderTypes"
+import { GET_ORDERS, CREATE_ORDER, GET_ORDER_BY_CLIENT, CANCEL_ORDER } from "../types/orderTypes"
 import { START_LOADING, STOP_LOADING, SHOW_SUCCESS_MESSAGE, SHOW_ERRORR_MESSAGE } from '../types/loadingTypes'
 
 import axios from "axios"
@@ -46,6 +46,26 @@ export const getOrderByClient = (id) => async dispatch => {
         dispatch({
             type: GET_ORDER_BY_CLIENT,
             payload: response.data.orders
+        })
+        dispatch({
+            type: STOP_LOADING
+        })
+    } catch (error) {
+        dispatch({
+            type: STOP_LOADING
+        })
+    }
+}
+
+export const cancelOrder = (id) => async dispatch => {
+    try {
+        dispatch({
+            type: START_LOADING
+        })
+        const response = await axios.put('/api/client/cancel/oder/' + id)
+        dispatch({
+            type: CANCEL_ORDER,
+            payload: response.data
         })
         dispatch({
             type: STOP_LOADING
