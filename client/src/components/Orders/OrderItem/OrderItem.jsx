@@ -3,6 +3,7 @@ import { Dash, Plus } from "react-bootstrap-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { createOrder } from "redux/actions/orderAction";
 import Swal from "sweetalert2";
+import CreateRating from "components/Ratings/CreateRating/CreateRating";
 
 import "./OrderItem.css";
 export default function OrderItem(props) {
@@ -61,6 +62,7 @@ export default function OrderItem(props) {
               </div>
             </div>
           </div>
+          <CreateRating {...props} />
         </div>
       </div>
       <div className="mx-auto mt-5">

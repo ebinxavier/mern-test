@@ -6,6 +6,7 @@ export default function Rattings({
   index,
   onMouseEnter,
   onMouseLeave,
+  onSaveRating,
 }) {
   const fill = useMemo(() => {
     if (hoverRating >= index) {
@@ -20,6 +21,7 @@ export default function Rattings({
     <div
       onMouseEnter={() => onMouseEnter(index)}
       onMouseLeave={() => onMouseLeave()}
+      onClick={() => onSaveRating(index)}
     >
       <Icon fill={fill} />
     </div>

@@ -1,0 +1,16 @@
+.ratings-wrapper {
+  display: flex;
+}
+.comment-input {
+  background: #f8f9fa;
+  border: #f8f9fa;
+}
+.comment-container .btn-outline-primary {
+  border-color: #b39cd0;
+  color: #b39cd0;
+  margin-top: 20px;
+}
+.comment-container .btn-outline-primary:hover {
+  color: #fff;
+  background: #b39cd0;
+}
