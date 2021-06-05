@@ -3,10 +3,16 @@ import React, { useEffect, useState } from "react";
 import { getOrderByClient, cancelOrder } from "redux/actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
+import { DashCircle } from "react-bootstrap-icons";
+import ReactTooltip from "react-tooltip";
+import EditButton from "Common/Buttons/EditButton";
+import { useHistory } from "react-router-dom";
+import "./UserOrders.css";
 export default function UserOrders() {
   const [id, setID] = useState(null);
   const dispatch = useDispatch();
   const { orders } = useSelector((state) => state.orders);
+  const history = useHistory();
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     const { _id } = user;
@@ -18,6 +24,12 @@ export default function UserOrders() {
   const handleCancelOrder = (e, id) => {
     e.preventDefault();
     dispatch(cancelOrder(id));
+  };
+  const handleEditOrder = (id, data) => {
+    history.push({
+      pathname: "/orders/edit/" + id,
+      state: data,
+    });
   };
   return (
     <div className="row w-100">
@@ -55,10 +67,19 @@ export default function UserOrders() {
                   </span>
                 </div>
                 <div className="col-md-4">
-                  <button onClick={(e) => handleCancelOrder(e, order._id)}>
-                    Cancel
-                  </button>
-                  <button>Edit</button>
+                  <DashCircle
+                    onClick={(e) => handleCancelOrder(e, order._id)}
+                    data-tip
+                    data-for="cancelBtn"
+                    className="cancel-btn"
+                  />
+                  <ReactTooltip id="cancelBtn" place="top" effect="solid">
+                    Cancel Order
+                  </ReactTooltip>
+
+                  <EditButton
+                    onClick={() => handleEditOrder(order._id, order)}
+                  />
                 </div>
               </div>
             ))

@@ -19,6 +19,7 @@ import Orders from "Containers/Orders"
 import UserOrders from "Containers/UserOrders"
 import './App.css'
 import "react-responsive-modal/styles.css";
+import EditOrders from 'Containers/UserOrders/EditOrders';
 
 export default function App() {
   return (
@@ -40,8 +41,8 @@ export default function App() {
           <AdminRoutes path="/admin/orders" component={Orders} />
 
           <UserRoutes path="/dashboard" component={UserDashboard} />
+          <UserRoutes path="/orders/edit/:id" component={EditOrders} />
           <UserRoutes path="/orders" component={UserOrders} />
-
 
 
 
