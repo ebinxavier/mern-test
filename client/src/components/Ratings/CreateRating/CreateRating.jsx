@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Rate from "components/Ratings";
+import * as API from "utils/api";
 import "./CreateRating.css";
+
 export default function CreateRating({ product, id }) {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
@@ -15,6 +17,7 @@ export default function CreateRating({ product, id }) {
     setRating(index);
   };
 
+  const [successMessage, setSuccessMessage] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
     const data = {
@@ -23,7 +26,10 @@ export default function CreateRating({ product, id }) {
       comment,
       ratting: rating,
     };
-    console.log(data, "data");
+    API.createReview(data).then(() =>
+      setSuccessMessage("Product Reviewed succesfully!")
+    );
+    setSuccessMessage("");
   };
   return (
     <>
@@ -56,6 +62,8 @@ export default function CreateRating({ product, id }) {
           </button>
         </div>
       )}
+      {successMessage && <span className="text-success">{successMessage}</span>}
+      {console.log(successMessage, "asas")}
     </>
   );
 }

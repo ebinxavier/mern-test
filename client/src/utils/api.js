@@ -51,3 +51,10 @@ export const createProduct = async (data) => {
 export const getProductById = async (id) => {
     const responese = await axios.get('/api/product/' + id)
 }
+
+export const createReview = async (data) => {
+    const response = await axios.post('/api/review/create', data)
+    return response
+
+}
+
