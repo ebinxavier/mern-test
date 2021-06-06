@@ -25,6 +25,7 @@
     "sweetalert2": "^10.15.2",
     "web-vitals": "^1.0.1"
   },
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
