@@ -11,6 +11,9 @@
     "heroku-postbuild": "cd client && npm install && npm run build"
 
   },
+  "engines": {
+    "node": "12.21.0"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",

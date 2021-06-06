@@ -77,9 +77,9 @@ export default function UserOrders() {
                     Cancel Order
                   </ReactTooltip>
 
-                  <EditButton
+                  {/* <EditButton
                     onClick={() => handleEditOrder(order._id, order)}
-                  />
+                  /> */}
                 </div>
               </div>
             ))
